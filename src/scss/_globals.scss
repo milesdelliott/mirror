@@ -1,0 +1,119 @@
+
+.ease-all {
+  transition: all ease 0.2s;
+}
+
+.hover-green-parent:hover .hover-green-child {
+  color: $green;
+}
+
+.hover-green-parent:hover .hover-green-child {
+  color: $green;
+}
+
+.rotate-10 { transform: rotate(10deg); }
+.hover-rotate-10-parent:hover .hover-rotate-10-child { transform: rotate(10deg); }
+
+@media #{$breakpoint-not-small}{
+  .rotate-10-ns { transform: rotate(10deg); }
+  .hover-rotate-10-ns:hover { transform: rotate(10deg); }
+}
+
+@media #{$breakpoint-medium}{
+  .rotate-10-m { transform: rotate(10deg); }
+  .hover-rotate-10-m:hover { transform: rotate(10deg); }
+
+}
+
+@media #{$breakpoint-large}{
+  .rotate-10-l { transform: rotate(10deg); }
+  .hover-rotate-10-l:hover { transform: rotate(10deg); }
+}
+
+.strike-all:after {
+  content: '';
+  left: 3em;
+  right: 1em;
+  position: absolute;
+  top: 50%;
+  height: 0.5em;
+  background: $green;
+  opacity: 0.5;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.strike-all--animate:after {
+
+  animation: draw 0.7s normal forwards ease-in-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes draw {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 90%;
+  }
+}
+
+.mh-100 {
+  max-height: 100%;
+}
+
+.anti-dim {
+  opacity: .5;
+  transition: opacity .15s ease-in;
+}
+.anti-dim:hover,
+.anti-dim:focus {
+  opacity: 1;
+  transition: opacity .15s ease-in;
+}
+.anti-dim:active {
+  opacity: .7; transition: opacity .15s ease-out;
+}
+
+@for $i from 0 through 6 {
+      .fls#{$i} {
+        flex-shrink: $i;
+      }
+}
+
+@for $i from 0 through 6 {
+    .flg#{$i} {
+      flex-grow: $i;
+    }
+}
+
+.flb-auto {
+  flex-basis: auto;
+}
+
+
+.flb-100 {
+  flex-basis: 100%;
+}
+
+
+.flb-90 {
+  flex-basis: 90%;
+}
+
+.flb-50 {
+  flex-basis: 50%;
+}
+
+.flb-25 {
+  flex-basis: 25%;
+}
+
+.flb-33 {
+  flex-basis: 33%;
+}
+
+.flb-66 {
+  flex-basis: 66%;
+}
+

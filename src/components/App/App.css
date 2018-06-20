@@ -1,0 +1,55 @@
+html, body {
+  background: black; }
+
+.region {
+  flex-grow: 1;
+  flex-shrink: 1;
+  transition: all ease .2s;
+  height: 33.33333vh;
+  overflow: hidden; }
+
+.col-1, .col-2 {
+  flex-basis: 5%; }
+
+.col-3 {
+  flex-basis: 90%; }
+
+.row-1, .row-2 {
+  height: 5vh; }
+
+.row-3 {
+  height: 90vh; }
+
+.level-0 {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black; }
+
+.level-1 {
+  background-color: rgba(255, 255, 255, 0.5); }
+
+.level-2 {
+  background-color: rgba(255, 255, 255, 0.3); }
+
+.level-3 {
+  background-color: rgba(255, 255, 255, 0.1); }
+
+.level-4 {
+  background-color: transparent; }
+
+.w-l {
+  flex-basis: 84%; }
+
+.w-s {
+  flex-basis: 8%; }
+
+.w-m {
+  flex-basis: 33%; }
+
+.h-l {
+  height: 84vh; }
+
+.h-s {
+  height: 8vh; }
+
+.h-m {
+  height: 33.33333vw; }
