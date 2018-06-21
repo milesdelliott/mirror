@@ -16,7 +16,8 @@
     "react-dom": "^16.4.0",
     "react-icons-weather": "^1.0.5",
     "react-scripts": "1.1.4",
-    "save": "^2.3.2"
+    "save": "^2.3.2",
+    "socket.io-client": "^2.1.1"
   },
   "scripts": {
     "build-css": "node-sass --include-path ./src --include-path ./node_modules src/ -o src/",

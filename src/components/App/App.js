@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import socketIOClient from 'socket.io-client'
 import './App.css';
 import Region from '../Region';
 import Time from '../Time';
@@ -26,6 +27,7 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            endpoint: '192.168.0.101:3010',
             regions: regions,
             focus: {
                 col: 3,
@@ -39,6 +41,7 @@ class App extends Component {
         this.focusLeft = this.focusLeft.bind(this)
         this.setFocus = this.setFocus.bind(this)
         this.fnMap = this.fnMap.bind(this)
+        this.gestureMap = this.gestureMap.bind(this)
 
     }
     fnMap() {
@@ -48,6 +51,15 @@ class App extends Component {
             39: this.focusRight,
             40: this.focusDown,
             reset: () => this.setFocus(3, 3)
+        }
+    }
+    gestureMap() {
+        return {
+            'left': this.focusLeft,
+            'up': this.focusUp,
+            'right': this.focusRight,
+            'down': this.focusDown,
+            'reset': () => this.setFocus(3, 3)
         }
     }
     componentDidMount() {
@@ -60,6 +72,11 @@ class App extends Component {
                 fnMap.reset()
             }
         })
+        const socket = socketIOClient(this.state.endpoint)
+        const gestureMap = this.gestureMap()
+        socket.on('gesture', ( gesture ) => {
+            if (gestureMap[gesture]) gestureMap[gesture]();
+        });
 
     }
     moveFocus(dimension, up) {

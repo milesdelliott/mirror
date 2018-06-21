@@ -19,7 +19,7 @@ const NewsItem = ({story, colFocus, rowFocus, className, storyIndex}) => {
 
         //console.log(story)
         return (<article className={"NewsItem fls1 flg1 ease-all flex-row " + (classMap[storyIndex]) + (isSecondary ? classMap['secondary'] : '') + ' ' + className }>
-                <img className={"ease-all pr3 pb3 " + (bothFocus ? '' : 'nr7 o-0') + (storyIndex == 0 ? ' fl' : ' fl')} src={story.multimedia[story.multimedia.length - 2].url} />
+                {story.multimedia[story.multimedia.length - 2] && <img className={"ease-all pr3 pb3 " + (bothFocus ? '' : 'nr7 o-0') + (storyIndex == 0 ? ' fl' : ' fl')} src={story.multimedia[story.multimedia.length - 2].url} />}
                 <h4 className={'NewsItem__title ma0 ' + (bothFocus && storyIndex == 0 ? 'f2' : 'f3') + (storyIndex == 0 ? ' fw8' : ' fw4')}>{story && story.title}</h4>
                 {bothFocus && <p className={"white-60 ph0 mv2 fw1"}>{story.abstract}  </p>}
             </article>
