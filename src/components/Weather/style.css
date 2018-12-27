@@ -1,0 +1,11 @@
+.current-weather-grid {
+  display: grid;
+  justify-items: start; }
+
+.current-weather-grid.current-weather-grid--both-focus {
+  grid-template-rows: auto auto auto auto auto;
+  grid-template-columns: auto auto; }
+
+.current-weather-grid:not(.current-weather-grid--both-focus) {
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto; }

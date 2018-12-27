@@ -1,0 +1,76 @@
+.moon-outer {
+    border-radius: 100%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+.moon-inner {
+    right: 50%;
+    transform: translateX(50%);
+    border-radius: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.moon-after{
+    height: 100%;
+    position: absolute;
+    width: 50%;
+
+}
+
+.moon-outer.first-quarter {
+    background: white;
+}
+
+.moon-inner.first-quarter {
+    background: black;
+}
+
+.moon-after.first-quarter {
+    right: 0;
+    background: black;
+}
+
+.moon-outer.full-moon {
+    background: black;
+}
+
+
+.moon-inner.full-moon {
+    background: white;
+}
+
+.moon-after.full-moon {
+    left: 0;
+    background: white;
+}
+
+.moon-outer.second-quarter {
+    background: black;
+}
+
+
+.moon-inner.second-quarter {
+    background: white;
+}
+
+.moon-after.second-quarter {
+    right: 0;
+    background: white;
+}
+
+.moon-outer.new-moon {
+    background: white;
+}
+
+.moon-inner.new-moon {
+    background: black;
+}
+
+.moon-after.new-moon {
+    left: 0;
+    background: black;
+}

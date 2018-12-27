@@ -5,7 +5,7 @@ let moment = require('moment');
 
 class Time extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             time: moment(),
         }
@@ -19,8 +19,8 @@ class Time extends Component {
     render() {
 
         return (
-            <div className="w-100 h-100 flex items-end justify-end">
-                <time className={"f2 fw2"}>{this.state.time.format('h:mm a')}</time>
+            <div className="w-100 h-85vh flex items-end justify-end">
+                <time className={"f2 fw2 pa3"}>{this.state.time.format('h:mm a')}</time>
             </div>
         );
     }

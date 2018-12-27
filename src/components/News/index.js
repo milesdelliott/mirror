@@ -8,39 +8,33 @@ const moment = require('moment');
 
 const NewsItem = ({story, colFocus, rowFocus, className, storyIndex}) => {
         const isSecondary = !(storyIndex === 0);
-        console.log(isSecondary, storyIndex)
+        //console.log(isSecondary, storyIndex)
         const bothFocus = colFocus && rowFocus;
         const classMap = {
-            0: 'flb-100 bb b--white bw1 pb3 mb3 ' ,
-            1: 'flb-25 br b--white bw1 pr3 mr3 ',
+            0: 'flb-100 bb bw1 pb3 mb3 ' ,
+            1: 'flb-25 br bw1 pr3 mr3 ',
             2: 'flb-25 ',
             secondary: `flb-25 ${bothFocus ? '' : 'o-0'} `
-    }
+    };
 
-        //console.log(story)
-        return (<article className={"NewsItem fls1 flg1 ease-all flex-row " + (classMap[storyIndex]) + (isSecondary ? classMap['secondary'] : '') + ' ' + className }>
-                {story.multimedia[story.multimedia.length - 2] && <img className={"ease-all pr3 pb3 " + (bothFocus ? '' : 'nr7 o-0') + (storyIndex == 0 ? ' fl' : ' fl')} src={story.multimedia[story.multimedia.length - 2].url} />}
-                <h4 className={'NewsItem__title ma0 ' + (bothFocus && storyIndex == 0 ? 'f2' : 'f3') + (storyIndex == 0 ? ' fw8' : ' fw4')}>{story && story.title}</h4>
+        return (<article className={"NewsItem fls1 flg1 ease-all flex-row " + (classMap[storyIndex]) + (isSecondary ? classMap['secondary'] : '') + (bothFocus ? 'b--white' : '') + ' ' + className }>
+                {story.multimedia[story.multimedia.length - 2] && <img className={"ease-all pr3 pb3 " + (bothFocus ? '' : 'nr7 o-0') + (storyIndex === 0 ? ' fl' : ' fl')} src={story.multimedia[story.multimedia.length - 2].url} />}
+                <h4 className={'NewsItem__title ma0 ' + (bothFocus && storyIndex === 0 ? 'f2' : 'f3') + (storyIndex === 0 ? ' fw8' : ' fw4')}>{story && story.title}</h4>
                 {bothFocus && <p className={"white-60 ph0 mv2 fw1"}>{story.abstract}  </p>}
             </article>
         );
-    }
+    };
 
 class News extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            newsRoute: 'https://api.nytimes.com/svc/topstories/v2/home.json?api-key=667aeb1938ed490f875d5fa9cfb1d1e6',
             news: false,
             currentIndex: 0,
-        }
+        };
         this.nextIndex = this.nextIndex.bind(this);
     }
     componentDidMount() {
-        request(this.state.newsRoute)(e => {
-            console.log(e)
-            this.setState({news: e})
-        })(e => e)
         setInterval(() => {
            this.nextIndex()
         }, 8000)
@@ -49,29 +43,52 @@ class News extends Component {
 
     nextIndex() {
         const currentIndex = this.state.currentIndex + 1;
-        if ( this.state.news && (currentIndex >= this.state.news.results.length)) {
+        if ( this.props.data.news && (currentIndex >= this.props.data.news.results.length)) {
             this.setState({currentIndex: 0})
         } else {
             this.setState({currentIndex: currentIndex})
         }
     }
 
-
-    render() {
-        const bothFocus = this.props.rowFocus && this.props.colFocus;
-        const preLast = this.state.news && (this.state.currentIndex === this.state.news.results.length);
-        const last = this.state.news && (this.state.currentIndex >= this.state.news.results.length);
-        const indexMap = {
-            0: this.state.currentIndex,
-            1: last ? 0 :  this.state.currentIndex + 1,
-            2: preLast ? 0 : this.state.currentIndex + 2,
+    getIndexMap(index = 0, length = 0) {
+        const dif = length - index;
+        switch (dif) {
+            case 0:
+                // this case should be caught by the this.nextIndex() before it gets to this function
+                return {
+                    0: 0,
+                    1: 1,
+                    2: 2
+                };
+            case 1:
+                return {
+                    0: index,
+                    1: 0,
+                    2: 1
+                };
+            case 2:
+                return {
+                    0: index,
+                    1: index + 1,
+                    2: 0
+                };
+            default:
+                return {
+                    0: index,
+                    1: index + 1,
+                    2: index + 2,
+                };
         }
-        if (this.state.news) console.log('indicies',this.state.currentIndex, this.state.news.results[indexMap[1]], this.state.news.results[indexMap[2]])
+    }
+    render() {
+        const news = this.props.data.news;
+        const bothFocus = this.props.rowFocus && this.props.colFocus;
+        const indexMap = news ? this.getIndexMap(this.state.currentIndex, news.results.length) : {0: this.state.currentIndex, 1: this.state.currentIndex + 1, 2: this.state.currentIndex + 2};
         return (
-            <div className="flex flex-row">
-                <FontAwesomeIcon className="mr2 f3 orange" icon={faNewspaper} />
+            <div className="flex flex-row mh5 mv2 relative ">
+                <FontAwesomeIcon className={"ma0 f1 overflow-hidden ph2 mw-100 absolute top-0 left-0 translate-nx1 orange " + (bothFocus ? 'o-50' : '') } icon={faNewspaper} />
                 <div className={" flex flex-row flex-wrap"}>
-                {this.state.news && [0,1,2].map(e => <NewsItem className={"flb-100"} key={e} storyIndex={e} story={this.state.news.results[indexMap[e]]} colFocus={this.props.colFocus} rowFocus={this.props.rowFocus} />)}
+                {news && [0,1,2].map(e => news.results[indexMap[e]] && <NewsItem className={"flb-100"} key={e} storyIndex={e} story={news.results[indexMap[e]]} colFocus={this.props.colFocus} rowFocus={this.props.rowFocus} />)}
                 </div>
             </div>
         );

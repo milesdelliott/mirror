@@ -1,5 +1,5 @@
 const regions = [
-    {
+    [{
         name: 'A',
         col: 1,
         row: 1,
@@ -19,8 +19,8 @@ const regions = [
         row: 1,
         title: "Actionables",
         level: 2,
-    },
-    {
+    }],
+    [{
         name: 'D',
         col: 1,
         row: 2,
@@ -40,8 +40,8 @@ const regions = [
         row: 2,
         title: "Calendar",
         level: 3,
-    },
-    {
+    }],
+    [{
         name: 'G',
         col: 1,
         row: 3,
@@ -61,7 +61,7 @@ const regions = [
         row: 3,
         title: "",
         level: 4,
-    }
+    }]
 ];
 
 export default regions;

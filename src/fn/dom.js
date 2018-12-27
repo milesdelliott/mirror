@@ -4,10 +4,10 @@ const demo = url.searchParams.get("demo");
 let state = {
     col: 3,
     row: 3
-}
+};
 
 const nodeMap = (el) => (fn) =>
-    [].map.call(el, fn)
+    [].map.call(el, fn);
 
 
 const directionMap = {
@@ -28,10 +28,10 @@ const directionMap = {
         setFocus('row')(state.row)
     },
     reset: function (el) {
-        unsetFocus('row')
+        unsetFocus('row');
         unsetFocus('col')
     }
-}
+};
 
 const elGroups = {
     col: {
@@ -44,7 +44,7 @@ const elGroups = {
         2: document.getElementsByClassName('row-2'),
         3: document.getElementsByClassName('row-3'),
     }
-}
+};
 
 const toggles = {
     col: {
@@ -57,30 +57,31 @@ const toggles = {
         2: nodeMap(elGroups.row[2]),
         3: nodeMap(elGroups.row[3]),
     }
-}
+};
 
 const classes = {
     col:['w-s', 'w-m', 'w-l'],
     row: ['h-s', 'h-m', 'h-l']
-}
+};
 
 const setDimension = d => v => i => {
-    i.classList.remove(...classes[d])
+    i.classList.remove(...classes[d]);
     i.classList.add(v)
-}
+};
 
 
 const setFocus = d => n => {
+    console.log(d, n)
     [1,2,3].map(v => {
         toggles[d][v](setDimension(d)(classes[d][n === v ? 2 : 0]))
     });
-}
+};
 
 const unsetFocus  = d => {
     [1,2,3].map(v => {
         toggles[d][v](setDimension(d)(classes[d][v === 3 ? 2 : 0]))
     });
-}
+};
 
 if (demo) {
     setTimeout(() => {

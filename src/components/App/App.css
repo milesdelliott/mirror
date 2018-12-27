@@ -5,20 +5,16 @@ html, body {
   flex-grow: 1;
   flex-shrink: 1;
   transition: all ease .2s;
-  height: 33.33333vh;
   overflow: hidden; }
+
+.mirror-row {
+  transition: all ease .2s; }
 
 .col-1, .col-2 {
   flex-basis: 5%; }
 
 .col-3 {
   flex-basis: 90%; }
-
-.row-1, .row-2 {
-  height: 5vh; }
-
-.row-3 {
-  height: 90vh; }
 
 .level-0 {
   background-color: rgba(255, 255, 255, 0.8);
@@ -37,19 +33,19 @@ html, body {
   background-color: transparent; }
 
 .w-l {
-  flex-basis: 84%; }
+  flex-basis: 82%; }
 
 .w-s {
-  flex-basis: 8%; }
+  flex-basis: 9%; }
 
 .w-m {
   flex-basis: 33%; }
 
 .h-l {
-  height: 84vh; }
+  height: 90vh; }
 
 .h-s {
-  height: 8vh; }
+  height: 5vh; }
 
 .h-m {
-  height: 33.33333vw; }
+  flex-basis: 33.33333vw; }
