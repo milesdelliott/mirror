@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <style>
+
+        html, body {
+            background: black;
+            height: 100vh;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: grid;
+            font-size: 5rem;
+            grid-template-rows: 1em 1em 1em;
+            grid-template-columns: 1em 1em 1em;
+            grid-template-areas: ". up ." "left reset right" ". down .";
+        }
+
+        .button {
+            margin: 10px;
+            border: none;
+            background-color: #999;
+        }
+        .button:hover, .button:active, .button:focus  {
+            background-color: #fa4800;
+            outline: none;
+        }
+        .up {
+            grid-area: up;
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%;
+        }
+        .down {
+            grid-area: down;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+        .left {
+            grid-area: left;
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+        .right {
+            grid-area: right;
+            border-top-right-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+        .reset {
+            grid-area: reset;
+            border-radius: 10%;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <button class="button up" data-command="down">Up</button>
+    <button class="button down" data-command="up">Down</button>
+    <button class="button left" data-command="right">Left</button>
+    <button class="button right" data-command="left">Right</button>
+    <button class="button reset" data-command="reset">Reset</button>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        [].slice.call(document.getElementsByClassName('button')).forEach(button => {
+            button.addEventListener('click', handleClick)
+        } )
+    });
+    const handleClick = (event) => {
+        postData(`http://servad.local:3010/command`, {gesture: event.target.dataset.command})
+            .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
+            .catch(error => console.error(error));
+    }
+
+
+    function postData(url = ``, data = {}) {
+        // Default options are marked with *
+        return fetch(url, {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            mode: "cors", // no-cors, cors, *same-origin
+            cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: "same-origin", // include, *same-origin, omit
+            headers: {
+                "Content-Type": "application/json",
+                // "Content-Type": "application/x-www-form-urlencoded",
+            },
+            redirect: "follow", // manual, *follow, error
+            referrer: "no-referrer", // no-referrer, *client
+            body: JSON.stringify(data), // body data type must match "Content-Type" header
+        })
+            .then(response => response.json()); // parses response to JSON
+    }
+</script>
+
+</body>
+
+</html>
