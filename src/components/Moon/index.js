@@ -10,9 +10,18 @@ const MoonPhase = ({phase}) => {
         'Second Quarter': 'second-quarter',
         'New Moon': 'new-moon',
     };
-    const phaseClass = 'second-quarter';
-    const width = phase.int < 2 || (phase.int > 4 && phase.int < 6) ? Math.floor( (50 * (1 - (phase.float % 1))) * 2) : Math.floor( 100 * (phase.float % 1));
-    console.log(width, phase.int)
+    const classArr = [
+        'new-moon',
+        'new-moon',
+        'second-quarter',
+        'second-quarter',
+        'full-moon',
+        'full-moon',
+        'first-quarter',
+        'first-quarter',
+    ];
+    const phaseClass = classArr[Math.ceil(phase.float)];
+    const width = phase.int < 2 || (phase.int > 4 && phase.int < 6) ? Math.floor( (50 * (1 - ((phase.float % 2)/2))) * 2) : Math.floor( 100 * ((phase.float % 2)/2));
     return <div className={`moon-outer ${phaseClass} `}>
         <div style={{width: width + '%'}} className={`moon-inner ${phaseClass} `} />
         <div className={`moon-after ${phaseClass}`} />

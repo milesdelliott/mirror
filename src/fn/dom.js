@@ -71,7 +71,6 @@ const setDimension = d => v => i => {
 
 
 const setFocus = d => n => {
-    console.log(d, n)
     [1,2,3].map(v => {
         toggles[d][v](setDimension(d)(classes[d][n === v ? 2 : 0]))
     });
