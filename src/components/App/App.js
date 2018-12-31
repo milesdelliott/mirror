@@ -32,8 +32,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            endpoint: '192.168.0.103:3010',
-            dataRoute: 'http://servad.local:3009/data',
+            endpoint: 'http://servad.local:3010',
+            dataRoute: 'http://servad.local:3010/data',
             regions: regions,
             focus: {
                 col: 3,
