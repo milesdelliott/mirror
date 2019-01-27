@@ -128,7 +128,6 @@ class App extends Component {
         className={`m sans-serif flex flex-nowrap flex-column absolute absolute--fill white `}
       >
         {this.state.hasData &&
-          console.log() &&
           this.state.regions.map((regions, row) => (
             <RegionRow
               regions={regions}
