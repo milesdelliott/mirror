@@ -110,6 +110,12 @@ class News extends Component {
   }
   render() {
     const news = this.props.data.news;
+    if (!!news.fault)
+      return (
+        <div className="flex flex-row mh5 mv2 relative ">
+          Error with News Feeds
+        </div>
+      );
     console.log(news);
     const bothFocus = this.props.rowFocus && this.props.colFocus;
     const indexMap = news
