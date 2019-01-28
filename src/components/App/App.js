@@ -82,6 +82,8 @@ class App extends Component {
     socket.on('gesture', gesture => {
       if (gestureMap[gesture]) gestureMap[gesture]();
     });
+
+    setTimeout(this.getData, 7200000)
   }
   getData() {
     request(this.state.dataRoute)(e => {
