@@ -48,6 +48,7 @@ class App extends Component {
     this.setFocus = this.setFocus.bind(this);
     this.fnMap = this.fnMap.bind(this);
     this.gestureMap = this.gestureMap.bind(this);
+    this.getData = this.getData.bind(this);
   }
   fnMap() {
     return {
