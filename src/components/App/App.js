@@ -84,7 +84,7 @@ class App extends Component {
       if (gestureMap[gesture]) gestureMap[gesture]();
     });
 
-    setInterval(this.getData, 180000)
+    setInterval(this.getData, 1800000)
   }
   getData() {
     request(this.state.dataRoute)(e => {
