@@ -84,11 +84,10 @@ class App extends Component {
       if (gestureMap[gesture]) gestureMap[gesture]();
     });
 
-    setInterval(this.getData, 10000)
+    setInterval(this.getData, 180000)
   }
   getData() {
-    const dataRoute = this.state.dataRoute
-    request(dataRoute)(e => {
+    request(this.state.dataRoute)(e => {
       console.log('isRequesting', e);
       let newState = Object.assign({}, e, { hasData: true });
       this.setState(newState);
