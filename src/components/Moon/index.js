@@ -98,7 +98,6 @@ class Moon extends Component {
     render() {
         const m = moment();
         const phase = moonCalc(m.format('YYYY'),m.format('MM'),m.format('DD'),);
-        console.log(phase)
         //const phase = getMoonPhase(m)(this.props.data.moon);
         const bothFocus = this.props.rowFocus && this.props.colFocus;
         return phase

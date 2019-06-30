@@ -87,7 +87,7 @@ class App extends Component {
   }
   getData() {
     request(this.state.dataRoute)(e => {
-      console.log(e);
+      console.log('isRequesting', e);
       let newState = Object.assign({}, e, { hasData: true });
       this.setState(newState);
     })(e => {

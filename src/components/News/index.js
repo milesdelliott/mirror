@@ -116,7 +116,6 @@ class News extends Component {
           Error with News Feeds
         </div>
       );
-    console.log(news);
     const bothFocus = this.props.rowFocus && this.props.colFocus;
     const indexMap = news
       ? this.getIndexMap(this.state.currentIndex, news.results.length)
