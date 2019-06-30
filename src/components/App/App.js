@@ -86,7 +86,8 @@ class App extends Component {
     setInterval(this.getData, 10000)
   }
   getData() {
-    request(this.state.dataRoute)(e => {
+    const dataRoute = this.state.dataRoute
+    request(dataRoute)(e => {
       console.log('isRequesting', e);
       let newState = Object.assign({}, e, { hasData: true });
       this.setState(newState);
