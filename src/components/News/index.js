@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import request from '../../fn/api.js';
 import './style.css';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faNewspaper from '@fortawesome/fontawesome-pro-solid/faNewspaper';
-const moment = require('moment');
 
 const NewsItem = ({ story, colFocus, rowFocus, className, storyIndex }) => {
   const isSecondary = !(storyIndex === 0);
   //console.log(isSecondary, storyIndex)
-  const bothFocus = colFocus && rowFocus;
+  const bothFocus = true;
   const classMap = {
     0: 'flb-100 bb bw1 pb3 mb3 ',
     1: 'flb-25 br bw1 pr3 mr3 ',
@@ -116,7 +114,7 @@ class News extends Component {
           Error with News Feeds
         </div>
       );
-    const bothFocus = this.props.rowFocus && this.props.colFocus;
+    const bothFocus = true;
     const indexMap = news
       ? this.getIndexMap(this.state.currentIndex, news.results.length)
       : {

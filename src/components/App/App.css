@@ -1,5 +1,6 @@
 html, body {
-  background: black; }
+  background: black;
+  overflow-x: hidden; }
 
 .region {
   flex-grow: 1;

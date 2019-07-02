@@ -1,8 +1,32 @@
 import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
 import './App.css';
-import FocusLayout from '../FocusLayout'
+import Region from '../Region';
+import RegionRow from '../RegionRow';
+import Time from '../Time';
+import Date from '../Date';
+import Weather from '../Weather';
+import News from '../News';
+import Reddit from '../Reddit';
+import Moon from '../Moon';
+import Color from '../Color';
+import regions from './regions.js';
+import { directionMap } from '../../fn/dom.js';
 import request from '../../fn/api';
+
+const componentMap = {
+  A: false,
+  B: false,
+  C: News,
+  D: Moon,
+  E: Reddit,
+  F: Date,
+  G: Color,
+  H: Weather,
+  I: Time
+};
+
+
 
 class App extends Component {
   constructor(props) {
@@ -10,6 +34,7 @@ class App extends Component {
     this.state = {
       endpoint: 'http://servad.local:3010',
       dataRoute: 'http://servad.local:3010/data',
+      regions: regions,
       focus: {
         col: 3,
         row: 3
@@ -104,9 +129,21 @@ class App extends Component {
 
   render() {
     return (
-        this.state.hasData &&
-          <FocusLayout data={this.state.data} />
-        
+      <div
+        className={`m sans-serif flex flex-nowrap flex-column absolute absolute--fill white `}
+      >
+        {this.state.hasData &&
+          this.state.regions.map((regions, row) => (
+            <RegionRow
+              regions={regions}
+              key={row}
+              focus={this.state.focus}
+              row={row + 1}
+              data={this.state.data}
+              components={componentMap}
+            />
+          ))}
+      </div>
     );
   }
 }
