@@ -63,7 +63,6 @@ const getDescriptor = (date) => {
     const hour = format(date, 'H');
     const minute = format(date, 'm');
     return times.reduce((response, time) => {
-        console.log(response, minute, time.min, time.max);
         if (minute >= time.min && minute <= time.max ) {
             return {
                 appendHour: time.appendHour,

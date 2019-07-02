@@ -67,7 +67,7 @@ class News extends Component {
   nextIndex() {
     const currentIndex = this.state.currentIndex + 1;
     if (
-      this.props.data.news &&
+      this.props.data.news && this.props.data.news.results &&
       currentIndex >= this.props.data.news.results.length
     ) {
       this.setState({ currentIndex: 0 });
