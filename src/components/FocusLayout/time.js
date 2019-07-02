@@ -94,7 +94,10 @@ return <div className='time'>
 }
 
 </time>
-<p className="time-date">{format(date, 'dddd, D MMMM YYYY')}</p>
+<p className="time-date">{format(date, 'dddd')}
+<br />
+{format(date, 'D MMMM YYYY')}
+</p>
 </div>
 }
 

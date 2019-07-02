@@ -20,17 +20,17 @@ const NewsItem = ({ story, colFocus, rowFocus, className, storyIndex }) => {
         'NewsItem fls1 flg1 ease-all flex-row ' +
         classMap[storyIndex] +
         (isSecondary ? classMap['secondary'] : '') +
-        (bothFocus ? 'b--white' : '') +
+        (bothFocus ? 'b--moon-gray' : '') +
         ' ' +
         className
       }
     >
-      {story.multimedia[story.multimedia.length - 2] && (
+      {story.multimedia[story.multimedia.length - 2] && storyIndex === 0 && (
         <img
           className={
             'ease-all pr3 pb3 ' +
             (bothFocus ? '' : 'nr7 o-0') +
-            (storyIndex === 0 ? ' fl' : ' fl')
+            (storyIndex === 0 ? ' db fl' : ' dn fl')
           }
           src={story.multimedia[story.multimedia.length - 2].url}
         />
@@ -44,7 +44,7 @@ const NewsItem = ({ story, colFocus, rowFocus, className, storyIndex }) => {
       >
         {story && story.title}
       </h4>
-      {bothFocus && <p className={'white-60 ph0 mv2 fw1'}>{story.abstract} </p>}
+      {storyIndex === 0 && <p className={'white-60 ph0 mv2 fw1'}>{story.abstract} </p>}
     </article>
   );
 };
@@ -123,7 +123,7 @@ class News extends Component {
           2: this.state.currentIndex + 2
         };
     return (
-      <div className="flex flex-row mh5 mv2 relative ">
+      <div className="news relative ">
         <FontAwesomeIcon
           className={
             'ma0 f1 overflow-hidden ph2 mw-100 absolute top-0 left-0 translate-nx1 orange ' +
