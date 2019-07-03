@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { format } from 'date-fns'
 
 
@@ -72,32 +72,47 @@ const getDescriptor = (date) => {
         }
         return response;
     }, format(date, 'h:mm a'))
-} 
-
-const Time = () => {
-    const date = new Date()
-    const nice = getDescriptor(date);
-return <div className='time'>
-<p className="time-date">{format(date, 'dddd')}
-<br />
-{format(date, 'D MMMM YYYY')}
-</p>
-<time className="digital">{format(date, 'h:mm')} <span>{Number(format(date, 'H')) > 12 ? '.' : ''}</span> </time>
-<time className="nice">
-
-{nice.appendHour ?
-    
-    [<span key="text" className="nice-text">{nice.text} </span>,
-    <span key="hour" className="nice-hour">{nice.hour}</span>]
-    :
-    [<span key="hour" className="nice-hour">{nice.hour} </span>,
-    <span key="text" className="nice-text">{nice.text}</span>]
-
 }
 
-</time>
+class Time extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            time: new Date(),
+        }
+    }
+    componentDidMount() {
+        setInterval(() => {
+            this.setState({time: new Date()})
+        }, 1000)
 
-</div>
+    }
+    render() {
+                const nice = getDescriptor(this.state.time)
+        return (
+            <div className='time'>
+            <p className="time-date">{format(this.state.time, 'dddd')}
+            <br />
+            {format(this.state.time, 'D MMMM YYYY')}
+            </p>
+            <time className="digital">{format(this.state.time, 'h:mm')} <span>{Number(format(this.state.time, 'H')) > 12 ? '.' : ''}</span> </time>
+            <time className="nice">
+            
+            {nice.appendHour ?
+                
+                [<span key="text" className="nice-text">{nice.text} </span>,
+                <span key="hour" className="nice-hour">{nice.hour}</span>]
+                :
+                [<span key="hour" className="nice-hour">{nice.hour} </span>,
+                <span key="text" className="nice-text">{nice.text}</span>]
+            
+            }
+            
+            </time>
+            
+            </div>
+        );
+    }
 }
 
-export default Time
+export default Time;
