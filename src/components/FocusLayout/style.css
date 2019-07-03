@@ -36,6 +36,7 @@
   display: block;
   font-family: 'DEG7';
   color: #e64d06;
+  text-shadow: 0 0 4px #ff0006, 0 0 30px #e64d06;
   font-size: 3rem; }
 
 .nice {

@@ -9,9 +9,9 @@ const NewsItem = ({ story, colFocus, rowFocus, className, storyIndex }) => {
   const bothFocus = true;
   const classMap = {
     0: 'flb-100 bb bw1 pb3 mb3 ',
-    1: 'flb-25 br bw1 pr3 mr3 ',
-    2: 'flb-25 ',
-    secondary: `flb-25 ${bothFocus ? '' : 'o-0'} `
+    1: 'flb-100 bb bw1 pb3 mb3 ',
+    2: 'flb-100 ',
+    secondary: `flb-100`
   };
 
   return (
