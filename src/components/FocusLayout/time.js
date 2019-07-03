@@ -78,8 +78,11 @@ const Time = () => {
     const date = new Date()
     const nice = getDescriptor(date);
 return <div className='time'>
-
-<time className="digital">{format(date, 'h:mm a')}</time>
+<p className="time-date">{format(date, 'dddd')}
+<br />
+{format(date, 'D MMMM YYYY')}
+</p>
+<time className="digital">{format(date, 'h:mm')} <span>{Number(format(date, 'H')) > 12 ? '.' : ''}</span> </time>
 <time className="nice">
 
 {nice.appendHour ?
@@ -93,10 +96,7 @@ return <div className='time'>
 }
 
 </time>
-<p className="time-date">{format(date, 'dddd')}
-<br />
-{format(date, 'D MMMM YYYY')}
-</p>
+
 </div>
 }
 

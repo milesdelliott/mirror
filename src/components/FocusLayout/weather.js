@@ -9,7 +9,9 @@ return currentWeather && (<div className={'weather'}>
                      <WeatherIcon name="owm" className={"weather-icon"} night={isWithinRange(new Date(), sunrise, sunset)} iconId={"" + currentWeather.weather[0].id} />
                     <span className={"weather-temp"}>{currentWeather.main.temp.toFixed(0)}<span className="weather-deg">°</span></span>
                     <span className={"weather-type"}>{currentWeather.weather[0].main}</span> 
-                    <div className={"weather-sunset"}><i className={"weather-sunset-icon wi wi-sunset"} /><span className={"weather-sunset-time"}>{format(sunset, 'h:mm a')}</span></div>
+                    <div className={"weather-sunset"}><span className={"weather-sunset-label"}>Sunset at:</span>
+                        <i className={"weather-sunset-icon wi wi-sunset"} /><span className={"weather-sunset-time"}>{format(sunset, 'h:mm a')}</span>
+                        </div>
                 </div>)
                 }
 
