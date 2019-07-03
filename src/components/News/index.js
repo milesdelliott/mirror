@@ -17,12 +17,9 @@ const NewsItem = ({ story, colFocus, rowFocus, className, storyIndex }) => {
   return (
     <article
       className={
-        'NewsItem fls1 flg1 ease-all flex-row ' +
-        classMap[storyIndex] +
-        (isSecondary ? classMap['secondary'] : '') +
-        (bothFocus ? 'b--moon-gray' : '') +
-        ' ' +
-        className
+        `NewsItem fls1 flg1 ease-all flex-row ${classMap[storyIndex]}
+        ${(isSecondary ? classMap['secondary'] : '')}
+        b--mid-gray ${className}`
       }
     >
       {story.multimedia[story.multimedia.length - 2] && storyIndex === 0 && (
@@ -44,7 +41,7 @@ const NewsItem = ({ story, colFocus, rowFocus, className, storyIndex }) => {
       >
         {story && story.title}
       </h4>
-      {storyIndex === 0 && <p className={'white-60 ph0 mv2 fw1'}>{story.abstract} </p>}
+      {storyIndex === 0 && <p className={'white-80 ph0 mv2 fw1'}>{story.abstract} </p>}
     </article>
   );
 };
