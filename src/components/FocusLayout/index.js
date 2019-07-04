@@ -12,7 +12,7 @@ const FocusLayout = (props) => {
    
     return (
         <div className='focus'>
-            <Weather data={props.data} />
+            <Weather currentWeather={props.data.currentWeather} forecast={props.data.forecast} />
             <News data={props.data} />
             <Time />
         </div>

@@ -10,6 +10,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  --text-glow: 0 0 4px #ff0006, 0 0 30px #e64d06, 0 0 10px #e64d06;
   color: white; }
 
 .news {
@@ -36,7 +37,7 @@
   display: block;
   font-family: 'DEG7';
   color: #e64d06;
-  text-shadow: 0 0 4px #ff0006, 0 0 30px #e64d06, 0 0 10px #e64d06;
+  text-shadow: var(--text-glow);
   font-size: 3rem; }
 
 .nice {
@@ -64,9 +65,9 @@
 
 .weather-icon {
   font-size: 15rem;
-  opacity: 0.85;
+  opacity: 0.7;
   z-index: 5;
-  text-shadow: 0 0 4px #ff0006, 0 0 30px #e64d06, 0 0 10px #e64d06;
+  text-shadow: var(--text-glow);
   color: #e64d06; }
 
 .weather-temp {
@@ -74,6 +75,7 @@
   font-size: 8rem;
   padding-right: var(--marginRight);
   margin-top: -1em;
+  margin-bottom: 0;
   z-index: 10;
   font-weight: 900; }
 
@@ -92,7 +94,16 @@
   z-index: 10;
   font-size: 3rem;
   margin-top: -0.1em;
+  margin-bottom: 0;
   color: #ccc; }
+
+.weather-rain-icon {
+  color: #333;
+  margin-left: 0.4em; }
+
+.weather-rain-icon--active {
+  color: #e64d06;
+  text-shadow: var(--text-glow); }
 
 .weather-sunset {
   text-align: right;
@@ -107,4 +118,6 @@
   text-transform: uppercase; }
 
 .weather-sunset-icon {
+  color: #e64d06;
+  text-shadow: var(--text-glow);
   margin-right: 1rem; }
