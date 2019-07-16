@@ -3,7 +3,6 @@ import request from '../../fn/api';
 import Time from '../Time'
 import Weather from '../Weather'
 import News from '../News'
-import './style.css';
 
 class App extends Component {
   constructor(props) {

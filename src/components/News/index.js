@@ -1,77 +1,60 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import NewsIcon from './news-icon'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faNewspaper from '@fortawesome/fontawesome-pro-solid/faNewspaper';
 
 const NewsItem = ({ story, className, storyIndex }) => {
   const isPrimary = storyIndex === 0;
   return (
     <article
       className={
-        `NewsItem fls1 flg1 ease-all flex-row
-        b--mid-gray ${className}`
+        `news-item ${isPrimary ? ' news-item--isPrimary' : ''} ${className}`
       }
     >
       {story.multimedia[story.multimedia.length - 2] && isPrimary && (
         <img
           className={
-            `ease-all pr3 pb3 fl ${isPrimary ? ' db' : ' dn'}`
+            `news-item-image`
           }
           src={story.multimedia[story.multimedia.length - 2].url}
         />
       )}
       <h4
         className={
-          `NewsItem__title ma0
-          ${isPrimary ? ' f2 fw4' : ' fw8 f3'}`
+          `news-item-title`
         }
       >
         {story && story.title}
       </h4>
-      {isPrimary && <p className={'white-80 ph0 mv2 fw1'}>{story.abstract} </p>}
+      {isPrimary && <p className={'news-item-abstract'}>{story.abstract} </p>}
     </article>
   );
 };
 
-class News extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      news: false,
-      currentIndex: 0
-    };
-    this.nextIndex = this.nextIndex.bind(this);
-  }
-  componentDidMount() {
-    setInterval(() => {
-      this.nextIndex();
-    }, 8000);
-  }
-
-  nextIndex() {
-    this.setState({ currentIndex: this.state.currentIndex > 100 ? 0 : this.state.currentIndex + 1 });
-      
-  }
-
-  getOffsetIndex(length, index) {
-    return offset => (index + offset) % length
-  }
-  render() {
-    const {news} = this.props;
-    if (!!news.fault)
+const getOffsetIndex = (length, index) => {
+  return offset => (index + offset) % length
+}
+const News = ({news}) =>  {
+    if (!!news.fault) {
       return (
-        <div className="flex flex-row mh5 mv2 relative ">
+        <div className="">
           Error with News Feeds
         </div>
       );
-    const getIndexWithOffset = this.getOffsetIndex(news.results.length, this.state.currentIndex);
+    }
+    const [index, setIndex] = useState(0);
+      useEffect(() => {
+        setInterval(() => {
+          setIndex( index > news.results.length ? 0 : index + 1);
+        }, 8000);
+        
+    });
+    const getIndexWithOffset = getOffsetIndex(news.results.length, index);
     return (
       <div className="news relative ">
         <h2
           className={ 'news-title' }
-        ><NewsIcon /> News</h2>
+        ><NewsIcon />News</h2>
         
-        <div className={' flex flex-row flex-wrap'}>
+        <div className={''}>
         {[0,1,2].map(i => <NewsItem
                     className={'flb-100'}
                     key={i}
@@ -82,6 +65,5 @@ class News extends Component {
       </div>
     );
   }
-}
 
 export default News;

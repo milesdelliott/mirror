@@ -5,7 +5,7 @@ export default () =>
         data-icon="newspaper"
         class="svg-inline--fa fa-newspaper fa-w-18 news-icon"
         role="img" xmlns="http://www.w3.org/2000/svg"
-        viewBox="-40 -40 656 592">
+        viewBox="-100 -100 776 712">
         <defs>
         <filter id="glow">
             <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
