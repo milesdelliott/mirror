@@ -3,7 +3,7 @@ export default () =>
     <svg aria-hidden="true"
         data-prefix="fas"
         data-icon="newspaper"
-        class="svg-inline--fa fa-newspaper fa-w-18 news-icon"
+        className="svg-inline--fa fa-newspaper fa-w-18 news-icon"
         role="img" xmlns="http://www.w3.org/2000/svg"
         viewBox="-100 -100 776 712">
         <defs>

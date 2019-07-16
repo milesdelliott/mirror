@@ -42,7 +42,7 @@ const News = ({news}) =>  {
     }
     const [index, setIndex] = useState(0);
       useEffect(() => {
-        setInterval(() => {
+        setTimeout(() => {
           setIndex( index > news.results.length ? 0 : index + 1);
         }, 8000);
         
