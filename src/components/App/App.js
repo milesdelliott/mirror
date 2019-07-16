@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
-import FocusLayout from '../FocusLayout'
 import request from '../../fn/api';
+import Time from '../Time'
+import Weather from '../Weather'
+import News from '../News'
+import './style.css';
 
 class App extends Component {
   constructor(props) {
@@ -43,10 +45,17 @@ class App extends Component {
   render() {
     return (
         this.state.hasData &&
-          <FocusLayout data={this.state.data} />
+          <Mirror data={this.state.data} />
         
     );
   }
 }
+
+const Mirror = ({data: {news, currentWeather, forecast}}) =>
+  <div className='focus'>
+    <Weather currentWeather={currentWeather} forecast={forecast} />
+    <News news={news} />
+    <Time />
+  </div>
 
 export default App;

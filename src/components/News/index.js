@@ -64,8 +64,8 @@ class News extends Component {
   nextIndex() {
     const currentIndex = this.state.currentIndex + 1;
     if (
-      this.props.data.news && this.props.data.news.results &&
-      currentIndex >= this.props.data.news.results.length
+      this.props.news && this.props.news.results &&
+      currentIndex >= this.props.news.results.length
     ) {
       this.setState({ currentIndex: 0 });
     } else {
@@ -104,7 +104,7 @@ class News extends Component {
     }
   }
   render() {
-    const news = this.props.data.news;
+    const news = this.props.news;
     if (!!news.fault)
       return (
         <div className="flex flex-row mh5 mv2 relative ">
