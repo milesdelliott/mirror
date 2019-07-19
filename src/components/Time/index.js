@@ -71,8 +71,11 @@ const times = [
 ]
 
 const add = (a) => (b) => a + b
+
 const convert24to12 = (number) => number > 12 ? number - 12 : number;
+
 const getDisplayHour = (intHour) => ['twelve','one', 'two', 'three', 'four', 'five', 'six','seven','eight','nine','ten','eleven','twelve'][intHour]
+
 const getDescriptor = (date) => {
     const minute = parseInt(format(date, 'm'));
     return times.reduce((response, time) => {

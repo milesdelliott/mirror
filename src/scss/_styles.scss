@@ -142,6 +142,7 @@ body {
   &-rain-icon {
     color: #333;
     margin-left: 0.4em;
+    text-shadow: none;
     &--active {
       color: #e64d06;
       text-shadow: var(--text-glow);

@@ -1,53 +1,54 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import request from '../../fn/api';
 import Time from '../Time'
 import Weather from '../Weather'
 import News from '../News'
+const dataRoute = 'http://servad.local:3010/data'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      endpoint: 'http://servad.local:3010',
-      dataRoute: 'http://servad.local:3010/data',
-      data: false,
-      hasData: false,
-      forceRefreshKey: false,
-      dataInterval: 1800000,
-    };
+const App = () => {
+  const [data, setData] = useState(false)
+  const [forceRefreshKey, setForceRefreshKey] = useState(false)
+  const [dataInterval, setDataInterval] = useState(1800000)
 
-    this.getData = this.getData.bind(this);
-    this.shouldRefresh = this.shouldRefresh.bind(this);
-  }
+  useEffect(() => {
+    getData();
+    setInterval(getData, dataInterval)
+  })
 
-  componentDidMount() {
-    this.getData();
-    setInterval(this.getData, this.state.dataInterval)
-  }
-  getData() {
-    request(this.state.dataRoute)(e => {
-      console.log('isRequesting', e);
-      let newState = Object.assign({}, e, { hasData: true });
-      this.shouldRefresh(e.forceRefreshKey) && window.location.reload(true)
-      this.setState(newState);
+  function getData() {
+    request(dataRoute)(e => {
+      const newData = e.data
+      const newForceRefreshKey = e.forceRefreshKey
+      const newDataInterval = e.dataInterval
+      if (newDataInterval !== dataInterval) {
+        setDataInterval(newDataInterval);
+      }
+      if (newForceRefreshKey !== forceRefreshKey) {
+        setForceRefreshKey(newForceRefreshKey);
+      }
+      if (newData !== data) {
+        console.log(data)
+        setData(newData);
+      }
+
+      shouldRefresh(e.forceRefreshKey) && window.location.reload(true)
     })(e => {
       console.log('err', e);
     });
   }
-  shouldRefresh(newRefresh) {
-    if (this.state.forceRefreshKey === false) {
+  function shouldRefresh(newRefresh) {
+    if (forceRefreshKey === false) {
       return false;
     }
-    return newRefresh !== this.state.forceRefreshKey
+    return newRefresh !== forceRefreshKey
   }
 
-  render() {
+
     return (
-        this.state.hasData &&
-          <Mirror data={this.state.data} />
+        data &&
+          <Mirror data={data} />
         
     );
-  }
 }
 
 const Mirror = ({data: {news, currentWeather, forecast}}) =>

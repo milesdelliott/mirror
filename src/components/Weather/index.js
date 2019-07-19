@@ -7,7 +7,7 @@ const Weather = ({currentWeather, forecast}) => {
     }
     const sunset = new Date(currentWeather.sys.sunset * 1000);
     const sunrise = new Date(currentWeather.sys.sunrise * 1000);
-    const mightRain = forecast.list.slice(0,4).some(item => item.hasOwnProperty('rain'));
+    const mightRain = forecast.list.slice(0,4).some(item => item.hasOwnProperty('rain')) || currentWeather.hasOwnProperty('rain');
     return (
         <div className={'weather'}>
             <WeatherIcon name="owm" className={"weather-icon"} night={!isWithinRange(new Date(), sunrise, sunset)} iconId={"" + currentWeather.weather[0].id} />
