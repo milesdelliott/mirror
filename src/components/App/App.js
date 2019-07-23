@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     getData();
-    setInterval(getData, dataInterval)
+    //setInterval(getData, 1800000)
   })
 
   function getData() {
