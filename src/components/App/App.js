@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     getData();
-    setInterval(getData, 1800000)
+    setInterval(getData, dataInterval)
   }, [])
 
   function getData() {
@@ -27,7 +27,6 @@ const App = () => {
         setForceRefreshKey(newForceRefreshKey);
       }
       if (newData !== data) {
-        console.log(data)
         setData(newData);
       }
 
