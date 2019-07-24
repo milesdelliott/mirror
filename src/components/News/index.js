@@ -33,7 +33,7 @@ const getOffsetIndex = (length, index) => {
   return offset => (index + offset) % length
 }
 const News = ({news}) =>  {
-    if (!!news.fault) {
+    if (!news || !!news.fault) {
       return (
         <div className="">
           Error with News Feeds
