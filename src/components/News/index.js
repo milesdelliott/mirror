@@ -46,7 +46,7 @@ const News = ({news}) =>  {
           setIndex( index > news.results.length ? 0 : index + 1);
         }, 8000);
         
-    });
+    }, []);
     const getIndexWithOffset = getOffsetIndex(news.results.length, index);
     return (
       <div className="news relative ">

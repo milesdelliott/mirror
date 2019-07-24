@@ -101,7 +101,7 @@ const Time = () => {
                 setTime(new Date());
             }, 1000)
             
-        });
+        }, []);
         const nice = getDescriptor(time);
         return (
             <div className='time'>

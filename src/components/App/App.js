@@ -12,8 +12,8 @@ const App = () => {
 
   useEffect(() => {
     getData();
-    //setInterval(getData, 1800000)
-  })
+    setInterval(getData, 1800000)
+  }, [])
 
   function getData() {
     request(dataRoute)(e => {
@@ -45,8 +45,9 @@ const App = () => {
 
 
     return (
-        data &&
+        data ?
           <Mirror data={data} />
+          : <span>loading...</span>
         
     );
 }
