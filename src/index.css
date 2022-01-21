@@ -29,13 +29,14 @@ body {
   text-align: right;
   align-self: end;
   padding: 2rem;
+  padding-top: 0;
   grid-column-start: 2;
   display: flex;
   align-items: flex-end;
   flex-flow: column; }
 
 .time-date {
-  font-size: 2em;
+  font-size: 1.8em;
   letter-spacing: 0.1ch;
   width: 80%;
   box-sizing: border-box;
@@ -66,7 +67,7 @@ body {
   box-sizing: border-box;
   color: #ddd;
   width: 100%;
-  padding: 0.4rem 1rem; }
+  padding: 0.4rem 0; }
 
 .digital {
   display: block;
@@ -166,11 +167,11 @@ body {
 .forecast {
   list-style-type: none;
   padding-left: 0;
-  margin: 0;
-  margin-right: 0.5rem; }
+  margin: 0; }
 
 .forecast-item {
-  padding: 1rem; }
+  padding: 1.5rem 1rem;
+  font-size: 0.75em; }
 
 .forecast-item > div {
   display: flex;
@@ -194,7 +195,8 @@ body {
   grid-row-start: 2;
   grid-column-start: 1;
   align-self: end;
-  padding: 2em; }
+  padding: 2em;
+  padding-top: 0; }
 
 .news-icon {
   display: inline-block;
