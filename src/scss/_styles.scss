@@ -168,6 +168,36 @@ body {
   }
 }
 
+.forecast {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  margin-right: 0.5rem;
+  &-item {
+    padding: 1rem;
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      color: #aaa;
+      &:first-of-type {
+        margin-bottom: 0.5rem;
+      }
+    }
+    &:nth-child(even) {
+      background-color: #222;
+    }
+  }
+  &-temp {
+    margin-right: 1.5rem;
+  }
+  &-time {
+    &-period {
+      font-size: 0.65em;
+      font-weight: bold;
+    }
+  }
+}
+
 .news {
   grid-row-start: 2;
   grid-column-start: 1;

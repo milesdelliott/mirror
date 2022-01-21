@@ -1,6 +1,7 @@
 import React from 'react'
 import { format, isWithinRange } from 'date-fns'
 import WeatherIcon from 'react-icons-weather';
+import Forecast from './forecast';
 const Weather = ({currentWeather, forecast}) => {
     if (!currentWeather) {
         return <div>Error: Weather Not Found</div>
@@ -27,6 +28,7 @@ const Weather = ({currentWeather, forecast}) => {
                     {format(sunset, 'h:mm a')}
                 </span>
             </div>
+            <Forecast list={forecast.list} sunrise={sunrise} sunset={sunset} />
         </div>
     );
 }

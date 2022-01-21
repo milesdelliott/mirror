@@ -35,7 +35,7 @@ body {
   flex-flow: column; }
 
 .time-date {
-  font-size: 1.5em;
+  font-size: 2em;
   letter-spacing: 0.1ch;
   width: 80%;
   box-sizing: border-box;
@@ -66,7 +66,7 @@ body {
   box-sizing: border-box;
   color: #ddd;
   width: 100%;
-  padding: 0.4rem 0; }
+  padding: 0.4rem 1rem; }
 
 .digital {
   display: block;
@@ -162,6 +162,33 @@ body {
   color: #e64d06;
   text-shadow: var(--text-glow);
   margin-right: 1rem; }
+
+.forecast {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  margin-right: 0.5rem; }
+
+.forecast-item {
+  padding: 1rem; }
+
+.forecast-item > div {
+  display: flex;
+  justify-content: space-between;
+  color: #aaa; }
+
+.forecast-item > div:first-of-type {
+  margin-bottom: 0.5rem; }
+
+.forecast-item:nth-child(even) {
+  background-color: #222; }
+
+.forecast-temp {
+  margin-right: 1.5rem; }
+
+.forecast-time-period {
+  font-size: 0.65em;
+  font-weight: bold; }
 
 .news {
   grid-row-start: 2;

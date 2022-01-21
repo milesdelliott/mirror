@@ -27,6 +27,7 @@ const App = () => {
         setForceRefreshKey(newForceRefreshKey);
       }
       if (newData !== data) {
+        console.log(newData)
         setData(newData);
       }
 
