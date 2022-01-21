@@ -185,7 +185,7 @@ body {
   margin-bottom: 0.5rem; }
 
 .forecast-item:nth-child(even) {
-  background-color: #222; }
+  background-color: #111; }
 
 .forecast-temp {
   margin-right: 1.5rem; }
