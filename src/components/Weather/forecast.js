@@ -28,7 +28,7 @@ const ForecastItem = ( {data: {name, icon, temp, forecastDate, isNight}} ) => {
 
 const Forecast = ( {list, sunrise, sunset} ) => {
     return <ul className={'forecast'}>
-        {list.slice(0,4).map( forecastData => <ForecastItem key={forecastData.dt} sunrise={sunrise} sunset={sunset} data={objectToFormat(forecastData)} />)}
+        {list.slice(0,5).map( forecastData => <ForecastItem key={forecastData.dt} sunrise={sunrise} sunset={sunset} data={objectToFormat(forecastData)} />)}
     </ul>
 }
 

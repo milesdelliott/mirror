@@ -173,7 +173,7 @@ body {
   margin: 0; }
 
 .forecast-item {
-  padding: 1.5rem 1rem;
+  padding: .75rem 1rem;
   font-size: 0.75em; }
 
 .forecast-item > div {
