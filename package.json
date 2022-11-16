@@ -12,7 +12,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-icons-weather": "github:milesdelliott/react-weather-icons#feature/night-icons",
-    "react-scripts": "1.1.4",
+    "react-scripts": "5.0.1",
     "save": "^2.3.2",
     "socket.io-client": "^2.1.1"
   },
